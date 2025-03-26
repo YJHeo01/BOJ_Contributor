@@ -27,6 +27,7 @@
 ## 🛠️ 기술 스택
 
 - Python
+- Flask
 - BeautifulSoup
 - requests
 
