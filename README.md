@@ -30,6 +30,7 @@
 - Flask
 - BeautifulSoup
 - requests
+- svgwrite
 
 ---
 
