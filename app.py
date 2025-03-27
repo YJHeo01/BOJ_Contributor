@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    ret_value = badge.create_svg()
+    ret_value = badge.create_svg(["sk14cj",1,2,3,4])
     return Response(ret_value,mimetype='image/svg+xml')
 
 @app.route('/user/<username>')
