@@ -1,45 +1,64 @@
 import svgwrite
 
 def create_svg(data):
-    """
-    data: 리스트 형식의 정보
-      data[0]: 뱃지 타이틀 (예: "BOJ Contributor")
-      data[1]: "문제 제작" 횟수 또는 관련 정보
-      data[2]: "문제 검수" 횟수 또는 관련 정보
-      data[4]: "난이도 기여" 횟수 또는 관련 정보
-    """
-    # 뱃지 크기 설정 (GitHub 뱃지 스타일)
-    width, height = 350, 170
+    # 뱃지 전체 크기 설정
+    width = 400
+    height = 280
     dwg = svgwrite.Drawing(size=(f"{width}px", f"{height}px"))
     
-    # 배경 그라데이션 정의 (위에서 아래로)
-    gradient = dwg.linearGradient(start=(0, 0), end=(0, 1), id="grad")
-    gradient.add_stop_color(0, "#99ccff")  # 연한 블루
-    gradient.add_stop_color(1, "#3399ff")  # 진한 블루
-    dwg.defs.add(gradient)
+    # 배경: 다크 모던 느낌의 어두운 그레이 색상과 둥근 모서리
+    dwg.add(dwg.rect(insert=(0, 0), size=(width, height), rx=20, ry=20, fill='#2C2F33'))
     
-    # 드롭 섀도우 필터 정의 (그림자 효과)
-    shadow = dwg.defs.add(dwg.filter(id="shadow", filterUnits="userSpaceOnUse"))
-    shadow.feOffset(in_="SourceAlpha", dx=2, dy=2, result="offOut")
-    shadow.feGaussianBlur(in_="offOut", stdDeviation=2, result="blurOut")
-    shadow.feBlend(in_="SourceGraphic", in2="blurOut", mode="normal")
+    # 타이틀 텍스트 (중앙 정렬)
+    title = "BOJ Contribute Stat"
+    dwg.add(dwg.text(
+        title,
+        insert=(width / 2, 40),
+        text_anchor="middle",
+        fill="white",
+        font_size="24px",
+        font_family="Arial, sans-serif",
+        font_weight="bold"
+    ))
     
-    # 라운드된 사각형 배경 추가 (드롭 섀도우 적용)
-    rect = dwg.rect(insert=(0, 0), size=(width, height), rx=10, ry=10, fill=f"url(#{gradient.get_id()})")
-    rect.update({'filter': 'url(#shadow)'})
-    dwg.add(rect)
+    # 통계 항목들을 위한 시작 위치와 줄 간격 설정
+    start_y = 80
+    line_height = 35
     
-    # 텍스트 스타일 설정 (폰트 및 색상)
-    dwg.defs.add(dwg.style("text { font-family: 'Noto Sans KR', 'Arial', sans-serif; fill: white; }"))
+    stats = [
+        ("BOJ Handle", data[0]),
+        ("만든 문제", str(data[1])),
+        ("검수한 문제", str(data[2])),
+        ("기여한 문제", str(data[3])),
+        ("난이도 투표", str(data[4]))
+    ]
     
-    # 뱃지 타이틀 (중앙 정렬)
-    dwg.add(dwg.text(data[0], insert=(width / 2, 30), text_anchor="middle", font_size="20px", font_weight="bold"))
+    # 좌측과 우측 영역을 나누는 기준 x좌표 (라인 추가)
+    split_x = width * 0.5
+    # 수직 구분선 (액센트 컬러)
+    dwg.add(dwg.line(start=(split_x, start_y - 20), 
+                     end=(split_x, start_y + len(stats) * line_height - 10),
+                     stroke="#7289DA", stroke_width=2))
     
-    # 두 개의 정보를 좌/우 열에 배치
-    dwg.add(dwg.text("문제 제작: " + str(data[1]), insert=(20, 60), font_size="14px"))
-    dwg.add(dwg.text("문제 검수: " + str(data[2]), insert=(width / 2 + 10, 60), font_size="14px"))
-    dwg.add(dwg.text("BOJ Contributor", insert=(20, 100), font_size="14px"))
-    # 하단 우측에 난이도 기여 정보 배치
-    dwg.add(dwg.text("난이도 기여: " + str(data[4]), insert=(width / 2 + 10, 100), font_size="14px"))
+    # 각 통계 항목을 텍스트로 추가 (왼쪽: 라벨, 오른쪽: 값)
+    for i, (label, value) in enumerate(stats):
+        y = start_y + i * line_height
+        # 라벨 텍스트
+        dwg.add(dwg.text(
+            f"{label}:",
+            insert=(20, y),
+            fill="white",
+            font_size="18px",
+            font_family="Arial, sans-serif"
+        ))
+        # 값 텍스트 (오른쪽 정렬)
+        dwg.add(dwg.text(
+            value,
+            insert=(width - 20, y),
+            text_anchor="end",
+            fill="white",
+            font_size="18px",
+            font_family="Arial, sans-serif"
+        ))
     
     return dwg.tostring()
