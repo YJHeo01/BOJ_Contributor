@@ -28,7 +28,7 @@ def parse_html(html):
     for tag in tags:
         contributed_tag = soup.find('th',text=tag)
         tmp = contributed_tag.find_next_sibling('td').get_text(strip=True) if contributed_tag else 0
-        if type(tmp) == str: contributed_value += int(tmp)
+        contributed_value += int(tmp)
     
     data = {
         'made': made_value,
