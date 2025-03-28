@@ -1,6 +1,6 @@
 # BOJ_Contributor
 
-백준 온라인 저지 기여도를 한눈에 보기 쉽게 만들어 주는 Github README 뱃지
+[![BOJ](http://open.vulcan.site:2301/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
 
 ---
 
