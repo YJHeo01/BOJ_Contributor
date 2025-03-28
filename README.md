@@ -18,7 +18,7 @@
 
 ## 🚀 주요 기능
 
-- 백준 온라인 저지 생태계 기여도를 보여주는 GitHub 뱃지지
+- 백준 온라인 저지 생태계 기여도를 보여주는 GitHub 뱃지
 
 ---
 
@@ -26,9 +26,6 @@
 
 - Python
 - Flask
-- BeautifulSoup
-- requests
-- svgwrite
 
 ---
 
