@@ -29,8 +29,8 @@ def create_svg(data):
         ("BOJ Handle", data[0]),
         ("만든 문제", str(data[1])),
         ("검수한 문제", str(data[2])),
-        ("기여한 문제", str(data[3])),
-        ("난이도 투표", str(data[4]))
+        ("공헌한 문제", str(data[3])),
+        ("난이도 기여", str(data[4]))
     ]
     
     # 좌측과 우측 영역을 나누는 기준 x좌표 (라인 추가)
