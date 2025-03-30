@@ -39,8 +39,9 @@
 project
 │   README.md
 │   app.py
-|   badge.py
-└───src
+│   badge.py
+│   user_data.db
+└───api
     │   main.py
     |   boj_user_page.py
     |   solved_user_page.py
@@ -56,6 +57,10 @@ project
 # 설치 방법
 
 # 실행 방법
+[![BOJ](https://bojstat.vulcan.site/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+
+위 링크에서 sk14cj를 제거하고, 본인의 핸들을 작성한 후 GitHub README 파일에 삽입하면 됩니다.
+
 ```
 
 ---
@@ -63,13 +68,12 @@ project
 ## ✨ 향후 계획
 
 - 뱃지 디자인 수정 및 추가
-- 최근 1일간 solved api, 백준 웹페이지를 읽었을 경우, db에 있는 데이터를 전송하도록 하여, 백준 서버 부담 최소화
 
 ---
 
-## 📄 개발일지
+## 📄 도움을 주신 분
 
-https://blog.naver.com/thinking_diary/223809084407
+서버 제공 : 이호민 님
 
 ---
 
