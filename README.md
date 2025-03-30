@@ -1,6 +1,6 @@
 # BOJ_Contributor
 
-[![BOJ](http://open.vulcan.site:2301/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+[![BOJ](https://bojstat.vulcan.site/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
 
 ---
 
