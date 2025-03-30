@@ -57,8 +57,8 @@ project
 │   user_data.db
 └───api
     │   main.py
-    |   boj_user_page.py
-    |   solved_user_page.py
+    │   boj_user_page.py
+    │   solved_user_page.py
 └───docs
     │   [문서, 이미지 파일 등]
 ```
