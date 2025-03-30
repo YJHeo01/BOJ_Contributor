@@ -2,6 +2,19 @@
 
 [![BOJ](https://bojstat.vulcan.site/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
 
+## 📖 사용법
+
+---
+```bash
+# 설치 방법
+
+# 실행 방법
+[![BOJ](https://bojstat.vulcan.site/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+
+위 링크에서 sk14cj를 제거하고, 본인의 핸들을 작성한 후 GitHub README 파일에 삽입하면 됩니다.
+
+```
+
 ---
 
 ## 📌 개발 의도
@@ -52,19 +65,6 @@ project
 
 ---
 
-## 📖 사용법
-
-```bash
-# 설치 방법
-
-# 실행 방법
-[![BOJ](https://bojstat.vulcan.site/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
-
-위 링크에서 sk14cj를 제거하고, 본인의 핸들을 작성한 후 GitHub README 파일에 삽입하면 됩니다.
-
-```
-
----
 
 ## ✨ 향후 계획
 
