@@ -6,15 +6,14 @@
 
 ---
 ```bash
-# 설치 방법
-
 # 실행 방법
 [![BOJ](https://bojstat.vulcan.site/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
 
 위 URL에서 sk14cj를 제거하고, 본인의 핸들을 작성한 후 GitHub README 파일에 삽입하면 됩니다.
 
 # 위 URL이 작동하지 않을 경우
-[![BOJ](http://open.vulcan.site:2301/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+(https://bojstat.vulcan.site/user/sk14cj)을 (http://open.vulcan.site:2301/user/sk14cj)을 수정하고 삽입해보세요. <br>
+그래도 안될 경우 https://www.acmicpc.net/board/view/158187#post 이 곳에 댓글을 남겨주세요.
 
 ```
 
@@ -86,6 +85,7 @@ BOJ_Contributor
 
 - 프로그램에 요청이 올 경우, 당일 기록이 업데이트가 되지 않은 경우 백준 온라인 저지의 웹페이지를 읽는 방식이라 백준 서버에 큰 부담이 되지 않을거라 판단해서 프로그램을 제작했지만, 혹여나 이 프로그램이 문제가 될 경우 하단 연락처로 연락을 주시면 프로그램을 중단하도록 하겠습니다.
 - 그 외에도 문의사항이 있을 경우, 하단 연락처로 연락해주시길 바랍니다.
+- https://www.acmicpc.net/board/view/158187#post
 - sk14cj@inu.ac.kr
 - 765432a@naver.com
 - pol0101868@gmail.com
