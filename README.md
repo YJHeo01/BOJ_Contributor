@@ -12,11 +12,7 @@
 
 위 URL에서 sk14cj를 제거하고, 본인의 핸들을 작성한 후 GitHub README 파일에 삽입하면 됩니다.
 
-# 위 URL이 작동하지 않을 경우
-
-(https://bojstat.vulcan.site/user/sk14cj)을 (http://open.vulcan.site:2301/user/sk14cj)을 수정하고 삽입해보세요.
-
-그래도 안될 경우 https://www.acmicpc.net/board/view/158187#post에 댓글을 남겨주세요.
+문제가 있을 경우 https://www.acmicpc.net/board/view/158187에 댓글을 남겨주세요.
 
 ```
 
