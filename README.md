@@ -1,6 +1,6 @@
 # BOJ_Contributor
 
-[![BOJ](https://bojstat.vulcan.site/user/sk14cj?v=1)](https://www.acmicpc.net/user/sk14cj)
+[![BOJ](https://bojstat.vulcan.site/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
 
 ## 📖 사용법
 
