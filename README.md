@@ -1,6 +1,6 @@
 # BOJ_Contributor
 
-[![BOJ](https://bojstat.vulcan.site/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+[![BOJ](https://bojstat.vulcan.site/user/sk14cj?v=3)](https://www.acmicpc.net/user/sk14cj)
 
 ## 📖 사용법
 
@@ -38,7 +38,7 @@
 - 공헌한 문제 : 데이터 추가, 오타 수정 등의 기여로 완성도를 높인 문제를 뜻합니다.
 - 난이도 기여 : solved.ac에서의 난이도 기여를 뜻합니다.
 - 기록은 하루에 최대 한번 업데이트 됩니다.
-- Github의 이미지 캐시 때문에 기록 갱신 반영이 늦어질 수 있습니다. 양해 부탁드립니다.
+
 
 ---
 
