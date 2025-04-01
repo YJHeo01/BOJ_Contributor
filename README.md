@@ -10,6 +10,10 @@
 
 [![BOJ](https://bojstat.vulcan.site/user/sk14cj)](https://www.acmicpc.net/user/sk14cj)
 
+혹은
+
+[![BOJ](https://bojstat.vulcan.site/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+
 위 URL에서 sk14cj를 제거하고, 본인의 핸들을 작성한 후 GitHub README 파일에 삽입하면 됩니다.
 
 문제가 있을 경우 https://www.acmicpc.net/board/view/158187에 댓글을 남겨주세요.
