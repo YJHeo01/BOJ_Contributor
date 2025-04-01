@@ -1,4 +1,4 @@
-import svgwrite
+import svgwrite, hashlib
 
 def create_svg(data):
     # 뱃지 전체 크기 설정
@@ -60,5 +60,4 @@ def create_svg(data):
             font_size="18px",
             font_family="Arial, sans-serif"
         ))
-    
-    return dwg.tostring()
+    return dwg.tostring(), hashlib.md5(dwg.tostring().encode('utf-8')).hexdigest()
