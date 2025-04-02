@@ -6,7 +6,7 @@ from api.solved_user_page import solved_user_data
 logger = logging.getLogger(__name__)
 
 def main(username):
-    information = (username,0,0,0,0)
+    information = (username,0,0,0,0,'2000-01-01')
     try:
         date = datetime.now()
         date = date.isoformat()[:10]
@@ -29,13 +29,10 @@ def main(username):
         information = cursor.fetchone()
 
         if information is None:
-            # 레코드가 없으면 새로 INSERT
-            user_data = boj_user_data(username) + solved_user_data(username)
-            information = (user_data[0], 0, 0, 0, 0, '2000-01-01')
+            information = (username, 0, 0, 0, 0, '2000-01-01')
             cursor.execute("INSERT INTO users VALUES (?,?,?,?,?,?)", information)
             connection.commit()
 
-        #print(information[5])
         if information[5] != date:
             user_data = boj_user_data(username) + solved_user_data(username)
             if min(user_data[1:5]) >= 0:
