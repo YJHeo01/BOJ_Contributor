@@ -1,4 +1,6 @@
-import requests
+import requests, logging
+
+logger = logging.getLogger(__name__)
 
 def solved_user_data(username):
     url = "https://solved.ac/api/v3/user/show"

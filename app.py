@@ -1,8 +1,24 @@
-from flask import Flask, Response
+from flask import Flask, Response, jsonify
 import api.main
 import images.badge as badge
+import logging
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler('app.log')
+    ]
+)
+
+logger = logging.getLogger(__name__)
 app = Flask(__name__)
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    logger.error(f"Unhandled exception: {e}", exc_info=True)
+    return jsonify(error="Internal Server Error"), 500
 
 @app.route('/<username>')
 def hello(username):
