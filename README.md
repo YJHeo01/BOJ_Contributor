@@ -16,7 +16,7 @@
 
 위 URL에서 sk14cj를 제거하고, 본인의 핸들을 작성한 후 GitHub README 파일에 삽입하면 됩니다.
 
-문제가 있을 경우 https://www.acmicpc.net/board/view/158187에 댓글을 남겨주세요.
+문제가 있을 경우 레포지토리에 이슈를 생성해주시거나, https://www.acmicpc.net/board/view/158187에 댓글을 남겨주세요.
 
 ```
 
