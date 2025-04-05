@@ -1,3 +1,4 @@
+from werkzeug.exceptions import HTTPException
 from flask import Flask, Response, jsonify
 import api.main
 import images.badge as badge
@@ -18,8 +19,11 @@ app = Flask(__name__)
 @app.errorhandler(Exception)
 def handle_exception(e):
     logger.error(f"Unhandled exception: {e}", exc_info=True)
+    if isinstance(e, HTTPException):
+        message = e.description if e.description else "Error"
+        return jsonify(error=message), e.code
     return jsonify(error="Internal Server Error"), 500
-
+        
 @app.route('/<username>')
 def hello(username):
     user_data = api.main.main(username)
