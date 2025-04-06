@@ -12,5 +12,6 @@ def solved_user_data(username):
     }
 
     response = requests.get(url, headers=headers,params=querystring)
-    if response.status_code != 200: return [0]
+    if response.status_code == 404: return [0]
+    if response.status_code != 200: return [-1]
     return [response.json()['voteCount']]
