@@ -54,7 +54,8 @@ def create_svg(data):
         # 값 텍스트
         dwg.add(dwg.text(
             stats[label],
-            insert=(width // 2, y),
+            insert=(width // 2 + 40, y),
+            text_anchor="end",
             fill="white",
             font_size="14px",
             #font_family="Arial, sans-serif"

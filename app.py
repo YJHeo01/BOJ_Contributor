@@ -1,11 +1,11 @@
 from werkzeug.exceptions import HTTPException
 from flask import Flask, Response, jsonify
 import api.main
-import image_generator.proto_badge as proto_badge
-import image_generator.white_badge_en as white_badge_en
-import image_generator.black_badge_en as black_badge_en
-import image_generator.white_badge_ko as white_badge_ko
-import image_generator.black_badge_ko as black_badge_ko
+import badge_generator.proto_badge as proto_badge
+import badge_generator.white_badge_en as white_badge_en
+import badge_generator.black_badge_en as black_badge_en
+import badge_generator.white_badge_ko as white_badge_ko
+import badge_generator.black_badge_ko as black_badge_ko
 import logging
 
 logging.basicConfig(
