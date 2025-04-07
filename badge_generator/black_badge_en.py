@@ -14,13 +14,13 @@ def create_svg(data):
     height = 195
     dwg = svgwrite.Drawing(size=(f"{width}px", f"{height}px"))
     
-    # 배경: 흰색 배경
+    # 배경
     bg_rect = dwg.rect(
         insert=(0, 0),
         size=(width, height),
         rx=10,  # 라운드 모서리
         ry=10,
-        fill="#2C2F33"  # 흰색 배경
+        fill="#111111"
     )
 
     dwg.add(bg_rect)
@@ -51,7 +51,7 @@ def create_svg(data):
             #font_family="Arial, sans-serif"
             font_weight="bold"
         ))
-        # 값 텍스트 (오른쪽 정렬)
+        # 값 텍스트
         dwg.add(dwg.text(
             stats[label],
             insert=(width // 2, y),
