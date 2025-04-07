@@ -1,7 +1,7 @@
 from werkzeug.exceptions import HTTPException
 from flask import Flask, Response, jsonify
 import api.main
-import images.badge as badge
+import image_generator.proto_badge as proto_badge
 import logging
 
 logging.basicConfig(
@@ -27,7 +27,7 @@ def handle_exception(e):
 @app.route('/<username>')
 def hello(username):
     user_data = api.main.main(username)
-    image = badge.create_svg(user_data)
+    image = proto_badge.create_svg(user_data)
     response = Response(image,mimetype='image/svg+xml')
     response.headers['Cache-Control'] = 'public, max-age=3600'
     return response
@@ -35,7 +35,7 @@ def hello(username):
 @app.route('/user/<username>')
 def show_user_profile(username):
     user_data = api.main.main(username)
-    image = badge.create_svg(user_data)
+    image = proto_badge.create_svg(user_data)
     response = Response(image,mimetype='image/svg+xml')
     response.headers['Cache-Control'] = 'public, max-age=3600'
     return response
