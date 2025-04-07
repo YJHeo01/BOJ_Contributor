@@ -3,7 +3,7 @@ import svgwrite
 def create_svg(data):
     # 뱃지 전체 크기 설정
     stats = {
-        "Solved Problem": '0',
+        "Solved Problem": str(data[5]),
         "Created Problem": str(data[1]),
         "Reviewed Problem": str(data[2]),
         "Fixed Problem": str(data[3]),
@@ -32,7 +32,8 @@ def create_svg(data):
         insert=(20, 30),
         fill="#E84DFF",
         font_size="18px",
-        font_weight="bold"
+        font_weight="bold",
+        font_family=('Segoe UI', 'Ubuntu', "Helvetica Neue", "Sans-Serif"),
     ))
     
     # 통계 항목들을 위한 시작 위치와 줄 간격 설정
@@ -44,11 +45,11 @@ def create_svg(data):
         y = start_y + i * line_height
         # 라벨 텍스트
         dwg.add(dwg.text(
-            f"{label}:",
+            f"{label}",
             insert=(20, y),
             fill="white",
             font_size="14px",
-            #font_family="Arial, sans-serif"
+            font_family=('Segoe UI', 'Ubuntu', "Helvetica Neue", "Sans-Serif"),
             font_weight="bold"
         ))
         # 값 텍스트
@@ -58,7 +59,7 @@ def create_svg(data):
             text_anchor="end",
             fill="white",
             font_size="14px",
-            #font_family="Arial, sans-serif"
+            font_family=('Segoe UI', 'Ubuntu', "Helvetica Neue", "Sans-Serif"),
             font_weight="bold"
         ))
     return dwg.tostring()

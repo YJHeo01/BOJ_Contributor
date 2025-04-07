@@ -10,7 +10,7 @@ def boj_user_data(username):
     }
     boj_response = requests.get(boj_url, headers=headers)
     boj_data = parse_html(boj_response.text)
-    ret_value = [username,int(boj_data['made']),int(boj_data['verified']),boj_data['contributed']]
+    ret_value = [username,int(boj_data['made']),int(boj_data['verified']),int(boj_data['contributed'])]
     #print(ret_value)
     return ret_value
 

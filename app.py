@@ -60,7 +60,5 @@ def show_white_badge_en(username):
     response.headers['Cache-Control'] = 'public, max-age=3600'
     return response
 
-
-
 if __name__ == '__main__':
     app.run(debug=True)

@@ -12,6 +12,8 @@ def solved_user_data(username):
     }
 
     response = requests.get(url, headers=headers,params=querystring)
-    if response.status_code == 404: return [0]
-    if response.status_code != 200: return [-1]
-    return [response.json()['voteCount']]
+    if response.status_code == 404: return [0,0,0,0,'0']
+    if response.status_code != 200: return [-1,-1,-1,-1,'-1']
+    tmp = response.json()
+    ret_value = [tmp['solvedCount'],tmp['voteCount'],tmp['tier'],tmp['class'],tmp['classDecoration']]
+    return ret_value

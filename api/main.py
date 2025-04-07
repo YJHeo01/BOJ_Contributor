@@ -35,7 +35,7 @@ def main(username):
 
         if information[5] != date:
             user_data = boj_user_data(username) + solved_user_data(username)
-            if min(user_data[1:5]) >= 0:
+            if min(user_data[1:8]) >= 0:
                 cursor.execute(
                     "UPDATE users SET made=?, verified=?, contributed=?, vote=?, date=? WHERE handle=?",
                     (int(user_data[1]), int(user_data[2]), int(user_data[3]), int(user_data[4]), date, username)
