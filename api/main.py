@@ -36,7 +36,7 @@ def main(username):
         if information[5] != date:
             boj_data = boj_user_data(username)
             
-            if boj_data['fixedCount'] < 0: return information
+            if boj_data['fixedCount'] == -1: return information
 
             solved_data = solved_user_data(username)
             
