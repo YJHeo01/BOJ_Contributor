@@ -1,4 +1,4 @@
-import svgwrite
+import svgwrite, base64
 
 def create_svg(data):
     # 뱃지 전체 크기 설정
@@ -62,4 +62,13 @@ def create_svg(data):
             font_family=('Segoe UI', 'Ubuntu', "Helvetica Neue", "Sans-Serif"),
             font_weight="bold"
         ))
+    
+    tier = 19
+    tier_file_name =  f'tier_image/{tier}.png'
+    with open(tier_file_name, 'rb') as f:
+        tier_encoded = base64.b64encode(f.read()).decode('utf-8')
+# data URI 생성
+    tier_uri = f'data:image/png;base64,{tier_encoded}'
+# SVG에 이미지 삽입
+    dwg.add(dwg.image(href=tier_uri, insert=((width // 2 + 40+width)//2 - 45, 185 // 2-50), size=(100, 100)))
     return dwg.tostring()
