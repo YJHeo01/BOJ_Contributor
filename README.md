@@ -1,4 +1,51 @@
-# BOJ_Contributor
+# BOJ_STAT V2 (작업 중)
+
+[![BOJ](https://bojstat.vulcan.site/v2/en/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+[![BOJ](https://bojstat.vulcan.site/v2/ko/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+
+## 📖 사용법
+
+---
+```bash
+# 사용 방법
+
+# 영어 ver
+[![BOJ](https://bojstat.vulcan.site/v2/en/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+
+# 한글 ver
+[![BOJ](https://bojstat.vulcan.site/v2/ko/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+
+위 URL에서 sk14cj를 제거하고, 본인의 핸들을 작성한 후 GitHub README 파일에 삽입하면 됩니다.
+
+# 커스텀 기능
+- 쿼리 파라미터를 사용하지 않을 경우 각각 제목:, 내용:, 배경: 과 같은 색상이 적용됩니다.
+- 쿼리 파라미터를 활용하여, 제목, 내용, 배경 색을 변경하여 나만의 뱃지를 만들 수 있습니다!
+- ex) 언어 : 한글, 보라색 제목, 검은 내용, 하얀 배경을 사용하고 싶은 경우 (우측 뱃지)
+- [![BOJ](https://bojstat.vulcan.site/v2/ko/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+- Codeforces 혹은 AtCoder 핸들과 뱃지 제목의 색상을 맞추고, 어울리는 배경 및 내용 색상을 찾아보세요!
+- 본인의 Solved.ac 티어 이미지와 어울리는 색깔 조합을 찾아보세요!
+- 쿼리 파라미터로는 색상을 대표하는 키워드, RGB값을 모두 사용하실 수 있습니다.
+
+
+```
+
+---
+
+## 🚀 주요 기능
+
+- 백준 온라인 저지 생태계 기여도와 백준에서의 활동량이 어땠는지 보여주는 Github 뱃지입니다.
+- 쿼리 파라미터를 활용하여 유저가 원하는 색상 조합을 사용할 수 있습니다.
+- 자세한 사용법은 상단에 있는 사용법-커스텀 기능 카테고리를 참고해주세요.
+- 만든 문제 : 해당 유저가 만든 문제를 뜻합니다.
+- 검수한 문제 : 해당 유저가 검수한 문제를 뜻합니다.
+- 공헌한 문제 : 데이터 추가, 오타 수정 등의 기여로 완성도를 높인 문제를 뜻합니다.
+- 난이도 기여 : solved.ac에서의 난이도 기여를 뜻합니다.
+- 기록은 하루에 최대 한번 업데이트 됩니다.
+
+
+---
+
+# BOJ_STAT V1 (BOJ_Contributor)
 
 [![BOJ](https://bojstat.vulcan.site/user/sk14cj?v=3)](https://www.acmicpc.net/user/sk14cj)
 
@@ -64,8 +111,12 @@ BOJ_Contributor
     │   main.py
     │   boj_user_page.py
     │   solved_user_page.py
-└───images
-    │   badge.py
+└───badge_generator
+    │   v1_badge.py
+    │   v2_badge_ko.py
+    │   v2_badge_en.py
+└───tier_image
+    │   solved.ac 티어 PNG 이미지 31개
 ```
 
 ---
@@ -80,7 +131,8 @@ BOJ_Contributor
 
 ## 📄 도움을 주신 분
 
-서버 제공 : [vulcan](https://github.com/firekann)님
+서버 제공 : [vulcan](https://github.com/firekann)님<br>
+티어 이미지 제공 : [Solved.ac](https://solved.ac/)
 
 ---
 
@@ -91,5 +143,3 @@ BOJ_Contributor
 - https://github.com/YJHeo01/BOJ_Contributor/issues
 - https://www.acmicpc.net/board/view/158187
 - sk14cj@inu.ac.kr
-- 765432a@naver.com
-- pol0101868@gmail.com
