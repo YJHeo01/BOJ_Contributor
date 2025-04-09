@@ -29,19 +29,26 @@ def main(username):
         information = cursor.fetchone()
 
         if information is None:
-            information = (username, 0, 0, 0, 0, '2000-01-01')
+            information = (username,0,0,0,0,'2000-01-01')
             cursor.execute("INSERT INTO users VALUES (?,?,?,?,?,?)", information)
             connection.commit()
 
         if information[5] != date:
-            user_data = boj_user_data(username) + solved_user_data(username)
-            if min(user_data[1:8]) >= 0:
-                cursor.execute(
-                    "UPDATE users SET made=?, verified=?, contributed=?, vote=?, date=? WHERE handle=?",
-                    (int(user_data[1]), int(user_data[2]), int(user_data[3]), int(user_data[4]), date, username)
-                )
-                connection.commit()
-                information = (username, int(user_data[1]), int(user_data[2]), int(user_data[3]), int(user_data[4]), date)
+            boj_data = boj_user_data(username)
+            
+            if boj_data['fixedCount'] < 0: return information
+
+            solved_data = solved_user_data(username)
+            
+            for label in ['solvedCount','voteCount','tier','class']:
+                if solved_data[label] < 0: return information
+            
+            cursor.execute(
+                "UPDATE users SET made=?, verified=?, contributed=?, vote=?, date=? WHERE handle=?",
+                (int(boj_data['createdCount']), int(boj_data['reviewedCount']), int(boj_data['fixedCount']), solved_data['voteCount'], date, username)
+            )
+            connection.commit()
+            information = (username, int(boj_data['createdCount']), int(boj_data['reviewedCount']), int(boj_data['fixedCount']), solved_data['voteCount'], date)
     except sqlite3.Error as e:
         logger.error(f"Database error: {e}")
         if connection:

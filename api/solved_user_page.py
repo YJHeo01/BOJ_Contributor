@@ -12,8 +12,25 @@ def solved_user_data(username):
     }
 
     response = requests.get(url, headers=headers,params=querystring)
-    if response.status_code == 404: return [0,0,0,0,'0']
-    if response.status_code != 200: return [-1,-1,-1,-1,'-1']
-    tmp = response.json()
-    ret_value = [tmp['solvedCount'],tmp['voteCount'],tmp['tier'],tmp['class'],tmp['classDecoration']]
+    
+    ret_value = {
+        'solvedCount': 0,
+        'voteCount': 0,
+        'tier': 0,
+        'class': 0
+    }
+    
+    labels = ['solvedCount','voteCount','tier','class']
+    
+    if response.status_code == 200:
+        information = response.json()
+        for label in labels:
+            ret_value[label] = information[label]
+        ret_value['class'] *= 3
+        if information['classDecoration'] == "silver": ret_value['class'] += 1
+        if information['classDecoration'] == "gold": ret_value['class'] += 2
+    else:
+        if response.status_code != 404:
+            for label in labels:
+                ret_value[label] = -1
     return ret_value
