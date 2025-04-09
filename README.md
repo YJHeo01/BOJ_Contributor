@@ -1,4 +1,4 @@
-# BOJ_STAT V2
+# BOJ_STAT V2 (작업 중)
 
 [![BOJ](https://bojstat.vulcan.site/v2/en/sk14cj)](https://www.acmicpc.net/user/sk14cj)
 [![BOJ](https://bojstat.vulcan.site/v2/ko/sk14cj)](https://www.acmicpc.net/user/sk14cj)
