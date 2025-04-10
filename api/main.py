@@ -6,8 +6,16 @@ from api.solved_user_page import solved_user_data
 logger = logging.getLogger(__name__)
 
 def main(username):
-    init_stat = (username,0,0,0,0,'2000-01-01')
-    stats = init_stat
+    ret_value = {
+        'handle':username,
+        'solvedCount': '0',
+        'createdCount':'0',
+        'reviewedCount':0,
+        'fixedCount':0,
+        'voteCount':0,
+        'tier': 0,
+        'class':0  
+    }
     try:
         date = datetime.now()
         date = date.isoformat()[:10]
@@ -33,11 +41,11 @@ def main(username):
         stats = cursor.fetchone()
 
         if stats is None:
-            stats = init_stat
-            cursor.execute("INSERT INTO users VALUES (?,?,?,?,?,?)", stats)
+            stats = (username, 0, '0', '0', 0, 0, 0, 0, '2000-01-01')
+            cursor.execute("INSERT INTO users VALUES (?,?,?,?,?,?,?,?,?)", stats)
             connection.commit()
-
-        if stats[5] != date:
+        
+        if stats[8] != date:
             boj_data = boj_user_data(username)
             
             if boj_data['fixedCount'] == -1: return stats
@@ -52,7 +60,7 @@ def main(username):
                 (boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'], date, username)
             )
             connection.commit()
-            stats = (username, boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'], date)
+        ret_value = convert_data(stats)
     except sqlite3.Error as e:
         logger.error(f"Database error: {e}")
         if connection:
@@ -63,7 +71,14 @@ def main(username):
         if connection:
             connection.close()
 
-    return stats
+    return ret_value
+
+def convert_data(data):
+    ret_value = {}
+    labels = ['handle','solvedCount','createdCount','reviewedCount','fixedCount','voteCount','tier','class']
+    for i in range(8):
+        ret_value[labels[i]] = data[i]
+    return ret_value
     
 if __name__ == "__main__":
     main(sys.argv[1])
