@@ -56,8 +56,8 @@ def main(username):
                 if solved_data[label] < 0: return ret_value
             
             cursor.execute(
-                "UPDATE users SET createdCount=?, reviewedCount=?, fixedCount=?, voteCount=?, tier=?, class=?, date=? WHERE handle=?",
-                (boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'],solved_data['tier'], solved_data['class'], date, username)
+                "UPDATE users SET solvedCount=?, createdCount=?, reviewedCount=?, fixedCount=?, voteCount=?, tier=?, class=?, date=? WHERE handle=?",
+                (solved_data['solvedCount'], boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'],solved_data['tier'], solved_data['class'], date, username)
             )
             connection.commit()
             ret_value = convert_data((username,solved_data['solvedCount'],boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'],solved_data['tier'], solved_data['class'], date))
