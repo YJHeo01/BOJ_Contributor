@@ -6,7 +6,8 @@ from api.solved_user_page import solved_user_data
 logger = logging.getLogger(__name__)
 
 def main(username):
-    stats = (username,0,0,0,0,'2000-01-01')
+    init_stat = (username,0,0,0,0,'2000-01-01')
+    stats = init_stat
     try:
         date = datetime.now()
         date = date.isoformat()[:10]
@@ -32,7 +33,7 @@ def main(username):
         stats = cursor.fetchone()
 
         if stats is None:
-            stats = (username,0,0,0,0,'2000-01-01')
+            stats = init_stat
             cursor.execute("INSERT INTO users VALUES (?,?,?,?,?,?)", stats)
             connection.commit()
 
