@@ -21,7 +21,7 @@ def create_svg(data):
         size=(width, height),
         rx=10,  # 라운드 모서리
         ry=10,
-        fill="#111111"
+        fill="#181818"
     )
 
     dwg.add(bg_rect)
@@ -48,7 +48,7 @@ def create_svg(data):
         dwg.add(dwg.text(
             f"{label}",
             insert=(20, y),
-            fill="white",
+            fill="#fffff0",
             font_size="14px",
             font_family=('Segoe UI', 'Ubuntu', "Helvetica Neue", "Sans-Serif"),
             font_weight="bold"
@@ -58,7 +58,7 @@ def create_svg(data):
             stats[label],
             insert=(width // 2 + 40, y),
             text_anchor="end",
-            fill="white",
+            fill="#fffff0",
             font_size="14px",
             font_family=('Segoe UI', 'Ubuntu', "Helvetica Neue", "Sans-Serif"),
             font_weight="bold"
