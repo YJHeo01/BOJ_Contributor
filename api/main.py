@@ -6,7 +6,16 @@ from api.solved_user_page import solved_user_data
 logger = logging.getLogger(__name__)
 
 def main(username):
-    information = (username,0,0,0,0,'2000-01-01')
+    ret_value = {
+        'handle':username,
+        'solvedCount': '0',
+        'createdCount':'0',
+        'reviewedCount':0,
+        'fixedCount':0,
+        'voteCount':0,
+        'tier': 0,
+        'class':0  
+    }
     try:
         date = datetime.now()
         date = date.isoformat()[:10]
@@ -16,39 +25,43 @@ def main(username):
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS users (
                 handle VARCHAR(51) PRIMARY KEY,
-                made INTEGER,
-                verified INTEGER,
-                contributed INTEGER,
-                vote INTEGER,
+                solvedCount INTEGER,
+                createdCount VARCHAR(7),
+                reviewedCount VARCHAR(7),
+                fixedCount INTEGER,
+                voteCount INTEGER,
+                tier INTEGER,
+                class INTEGER,
                 date CHAR(10)
             )
         ''')
 
         cursor.execute("SELECT * FROM users WHERE handle = ?", (username,))
 
-        information = cursor.fetchone()
+        stats = cursor.fetchone()
 
-        if information is None:
-            information = (username,0,0,0,0,'2000-01-01')
-            cursor.execute("INSERT INTO users VALUES (?,?,?,?,?,?)", information)
+        if stats is None:
+            stats = (username, 0, '0', '0', 0, 0, 0, 0, '2000-01-01')
+            cursor.execute("INSERT INTO users VALUES (?,?,?,?,?,?,?,?,?)", stats)
             connection.commit()
 
-        if information[5] != date:
+        ret_value = convert_data(stats)
+
+        if stats[8] != date:
             boj_data = boj_user_data(username)
-            
-            if boj_data['fixedCount'] == -1: return information
+            if boj_data['fixedCount'] == -1: return ret_value
 
             solved_data = solved_user_data(username)
-            
             for label in ['solvedCount','voteCount','tier','class']:
-                if solved_data[label] < 0: return information
+                if solved_data[label] < 0: return ret_value
             
             cursor.execute(
-                "UPDATE users SET made=?, verified=?, contributed=?, vote=?, date=? WHERE handle=?",
-                (int(boj_data['createdCount']), int(boj_data['reviewedCount']), int(boj_data['fixedCount']), solved_data['voteCount'], date, username)
+                "UPDATE users SET createdCount=?, reviewedCount=?, fixedCount=?, voteCount=?, tier=?, class=?, date=? WHERE handle=?",
+                (boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'],solved_data['tier'], solved_data['class'], date, username)
             )
             connection.commit()
-            information = (username, int(boj_data['createdCount']), int(boj_data['reviewedCount']), int(boj_data['fixedCount']), solved_data['voteCount'], date)
+            ret_value = convert_data((username,solved_data['solvedCount'],boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'],solved_data['tier'], solved_data['class'], date))
+        
     except sqlite3.Error as e:
         logger.error(f"Database error: {e}")
         if connection:
@@ -58,8 +71,15 @@ def main(username):
     finally:
         if connection:
             connection.close()
+    print(ret_value)
+    return ret_value
 
-    return information
+def convert_data(data):
+    ret_value = {}
+    labels = ['handle','solvedCount','createdCount','reviewedCount','fixedCount','voteCount','tier','class']
+    for i in range(8):
+        ret_value[labels[i]] = data[i]
+    return ret_value
     
 if __name__ == "__main__":
     main(sys.argv[1])

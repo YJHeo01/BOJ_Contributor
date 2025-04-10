@@ -17,7 +17,7 @@ def create_svg(data):
         text_anchor="middle",
         fill="white",
         font_size="24px",
-        font_family="Arial, sans-serif",
+        font_family=('Segoe UI', 'Ubuntu', "Helvetica Neue", "Sans-Serif"),
         font_weight="bold"
     ))
     
@@ -26,11 +26,11 @@ def create_svg(data):
     line_height = 35
     
     stats = [
-        ("BOJ Handle", data[0]),
-        ("만든 문제", str(data[1])),
-        ("검수한 문제", str(data[2])),
-        ("공헌한 문제", str(data[3])),
-        ("난이도 기여", str(data[4]))
+        ("BOJ Handle", data['handle']),
+        ("만든 문제", data['createdCount']),
+        ("검수한 문제", data['reviewedCount']),
+        ("공헌한 문제", str(data['fixedCount'])),
+        ("난이도 기여", str(data['voteCount']))
     ]
     
     # 좌측과 우측 영역을 나누는 기준 x좌표 (라인 추가)
@@ -49,7 +49,7 @@ def create_svg(data):
             insert=(20, y),
             fill="white",
             font_size="18px",
-            font_family="Arial, sans-serif"
+            font_family=('Segoe UI', 'Ubuntu', "Helvetica Neue", "Sans-Serif")
         ))
         # 값 텍스트 (오른쪽 정렬)
         dwg.add(dwg.text(
@@ -58,6 +58,6 @@ def create_svg(data):
             text_anchor="end",
             fill="white",
             font_size="18px",
-            font_family="Arial, sans-serif"
+            font_family=('Segoe UI', 'Ubuntu', "Helvetica Neue", "Sans-Serif")
         ))
     return dwg.tostring()
