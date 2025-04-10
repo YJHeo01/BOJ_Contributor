@@ -1,10 +1,11 @@
 from werkzeug.exceptions import HTTPException
-from flask import Flask, Response, jsonify
+from flask import Flask, Response, jsonify, request
 import api.main
 import badge_generator.v1_badge as v1_badge
 import badge_generator.v2_badge_en as v2_badge_en
 import badge_generator.v2_badge_ko as v2_badge_ko
 import logging
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -27,7 +28,7 @@ def handle_exception(e):
     return jsonify(error="Internal Server Error"), 500
         
 @app.route('/<username>')
-def show_prototype_badge(username):
+def show_v1_badge(username):
     user_data = api.main.main(username)
     image = v1_badge.create_svg(user_data)
     response = Response(image,mimetype='image/svg+xml')
@@ -35,7 +36,7 @@ def show_prototype_badge(username):
     return response
 
 @app.route('/user/<username>')
-def show_user_profile(username):
+def show_v1_badge_(username):
     user_data = api.main.main(username)
     image = v1_badge.create_svg(user_data)
     response = Response(image,mimetype='image/svg+xml')
@@ -43,7 +44,7 @@ def show_user_profile(username):
     return response
 
 @app.route('/v2/en/<username>')
-def show_black_badge_en(username):
+def show_v2_badge_en(username):
     user_data = api.main.main(username)
     image = v2_badge_en.create_svg(user_data)
     response = Response(image,mimetype='image/svg+xml')
@@ -51,7 +52,7 @@ def show_black_badge_en(username):
     return response
 
 @app.route('/v2/ko/<username>')
-def show_white_badge_en(username):
+def show_v2_badge_ko(username):
     user_data = api.main.main(username)
     image = v2_badge_ko.create_svg(user_data)
     response = Response(image,mimetype='image/svg+xml')
