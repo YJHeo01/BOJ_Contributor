@@ -44,23 +44,24 @@ def main(username):
             stats = (username, 0, '0', '0', 0, 0, 0, 0, '2000-01-01')
             cursor.execute("INSERT INTO users VALUES (?,?,?,?,?,?,?,?,?)", stats)
             connection.commit()
-        
+
+        ret_value = convert_data(stats)
+
         if stats[8] != date:
             boj_data = boj_user_data(username)
-            
-            if boj_data['fixedCount'] == -1: return stats
+            if boj_data['fixedCount'] == -1: return ret_value
 
             solved_data = solved_user_data(username)
-            
             for label in ['solvedCount','voteCount','tier','class']:
-                if solved_data[label] < 0: return stats
+                if solved_data[label] < 0: return ret_value
             
             cursor.execute(
-                "UPDATE users SET createdCount=?, reviewedCount=?, fixedCount=?, voteCount=?, date=? WHERE handle=?",
-                (boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'], date, username)
+                "UPDATE users SET createdCount=?, reviewedCount=?, fixedCount=?, voteCount=?, tier=?, class=?, date=? WHERE handle=?",
+                (boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'],solved_data['tier'], solved_data['class'], date, username)
             )
             connection.commit()
-        ret_value = convert_data(stats)
+            ret_value = convert_data((username,solved_data['solvedCount'],boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'],solved_data['tier'], solved_data['class'], date))
+        
     except sqlite3.Error as e:
         logger.error(f"Database error: {e}")
         if connection:
@@ -70,7 +71,7 @@ def main(username):
     finally:
         if connection:
             connection.close()
-
+    print(ret_value)
     return ret_value
 
 def convert_data(data):
