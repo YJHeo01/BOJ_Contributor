@@ -1,7 +1,7 @@
 import svgwrite, base64
 
 def create_svg(data):
-    # 뱃지 전체 크기 설정
+    
     stats = {
         "Solved Problems": str(data[5]),
         "Authored Problems": str(data[1]),
@@ -9,6 +9,7 @@ def create_svg(data):
         "Fixed Problems": str(data[3]),
         "Rating Contributions": str(data[4])
     }
+    # 뱃지 전체 크기 설정
 
     width = 467
     height = 195

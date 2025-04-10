@@ -1,11 +1,9 @@
 from werkzeug.exceptions import HTTPException
 from flask import Flask, Response, jsonify
 import api.main
-import badge_generator.proto_badge as proto_badge
-import badge_generator.white_badge_en as white_badge_en
-import badge_generator.black_badge_en as black_badge_en
-import badge_generator.white_badge_ko as white_badge_ko
-import badge_generator.black_badge_ko as black_badge_ko
+import badge_generator.v1_badge as v1_badge
+import badge_generator.v2_badge_en as v2_badge_en
+import badge_generator.v2_badge_ko as v2_badge_ko
 import logging
 
 logging.basicConfig(
@@ -31,7 +29,7 @@ def handle_exception(e):
 @app.route('/<username>')
 def show_prototype_badge(username):
     user_data = api.main.main(username)
-    image = proto_badge.create_svg(user_data)
+    image = v1_badge.create_svg(user_data)
     response = Response(image,mimetype='image/svg+xml')
     response.headers['Cache-Control'] = 'public, max-age=3600'
     return response
@@ -39,23 +37,23 @@ def show_prototype_badge(username):
 @app.route('/user/<username>')
 def show_user_profile(username):
     user_data = api.main.main(username)
-    image = proto_badge.create_svg(user_data)
+    image = v1_badge.create_svg(user_data)
     response = Response(image,mimetype='image/svg+xml')
     response.headers['Cache-Control'] = 'public, max-age=3600'
     return response
 
-@app.route('/black/en/<username>')
+@app.route('/v2/en/<username>')
 def show_black_badge_en(username):
     user_data = api.main.main(username)
-    image = black_badge_en.create_svg(user_data)
+    image = v2_badge_en.create_svg(user_data)
     response = Response(image,mimetype='image/svg+xml')
     response.headers['Cache-Control'] = 'public, max-age=3600'
     return response
 
-@app.route('/white/en/<username>')
+@app.route('/v2/ko/<username>')
 def show_white_badge_en(username):
     user_data = api.main.main(username)
-    image = white_badge_en.create_svg(user_data)
+    image = v2_badge_ko.create_svg(user_data)
     response = Response(image,mimetype='image/svg+xml')
     response.headers['Cache-Control'] = 'public, max-age=3600'
     return response
