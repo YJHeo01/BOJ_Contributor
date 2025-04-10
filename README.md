@@ -1,7 +1,7 @@
 # BOJ_STAT V2
 
-[![BOJ](https://bojstat.vulcan.site/v2/en/sk14cj)](https://www.acmicpc.net/user/sk14cj)
-[![BOJ](https://bojstat.vulcan.site/v2/ko/sk14cj)](https://www.acmicpc.net/user/sk14cj)
+[![BOJ](https://bojstat.vulcan.site/v2/en/sk14cj?v=4)](https://www.acmicpc.net/user/sk14cj)
+[![BOJ](https://bojstat.vulcan.site/v2/ko/sk14cj?v=3)](https://www.acmicpc.net/user/sk14cj)
 
 ## 📖 사용법
 
