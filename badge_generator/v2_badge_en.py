@@ -21,7 +21,7 @@ def create_svg(data):
         size=(width, height),
         rx=10,  # 라운드 모서리
         ry=10,
-        fill="#181818"
+        fill="#282a36"
     )
 
     dwg.add(bg_rect)

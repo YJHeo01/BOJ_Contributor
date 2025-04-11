@@ -3,8 +3,8 @@ import svgwrite, base64
 def create_svg(data):
     
     stats = {
-        "맞은 문제": str(data['solvedCount']),
-        "만든 문제": data['createdCount'],
+        "해결한 문제": str(data['solvedCount']),
+        "제작한 문제": data['createdCount'],
         "검수한 문제": data['reviewedCount'],
         "공헌한 문제": str(data['fixedCount']),
         "난이도 기여": str(data['voteCount'])
@@ -21,7 +21,7 @@ def create_svg(data):
         size=(width, height),
         rx=10,  # 라운드 모서리
         ry=10,
-        fill="#181818"
+        fill="#282a36"
     )
 
     dwg.add(bg_rect)
