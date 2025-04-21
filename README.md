@@ -131,10 +131,22 @@ BOJ_Contributor
 
 ---
 
-## 📄 도움을 주신 분
+## 🙏 도움을 주신 분
 
 서버 제공 : [vulcan](https://github.com/firekann)님<br>
 티어 이미지 제공 : [Solved.ac](https://solved.ac/)
+
+---
+
+## 📄 라이선스
+
+MIT License
+
+Copyright (c) 2025 Yongjun Heo
+
+이 프로젝트는 MIT 라이선스를 따릅니다. 프로젝트의 복제본에는 반드시 라이선스 전문이 포함되어야 합니다.
+
+자세한 내용은 [LICENSE](./LICENSE) 파일을 참조하거나, [MIT License 원문](https://opensource.org/licenses/MIT)을 확인하세요.
 
 ---
 
