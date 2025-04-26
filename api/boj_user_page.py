@@ -3,12 +3,20 @@ from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
 
+failure_data = {
+    'createdCount': '-1',
+    'reviewedCount': '-1',
+    'fixedCount': -1
+}
+
 def boj_user_data(username):
     boj_url = 'https://www.acmicpc.net/user/{}'.format(username)
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
     }
     boj_response = requests.get(boj_url, headers=headers)
+    if boj_response.status_code != 200:
+        return failure_data
     ret_value = parse_html(boj_response.text)
     return ret_value
 
@@ -38,10 +46,5 @@ def parse_html(html):
         }
     except Exception as e:
         logger.error(f"Error parsing HTML: {e}")
-        data = {
-            'createdCount': '-1',
-            'reviewedCount': '-1',
-            'fixedCount': -1
-        }
-    
+        data = failure_data
     return data
