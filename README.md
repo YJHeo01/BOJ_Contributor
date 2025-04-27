@@ -105,7 +105,7 @@
 ## 📂 프로그램 구조
 
 ```
-BOJ_Contributor
+BOJ_STAT
 │   README.md
 │   app.py
 │   user_data.db
