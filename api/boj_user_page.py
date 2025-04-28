@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 logger = logging.getLogger(__name__)
 
 failure_data = {
+    'solvedCount': -1,
     'createdCount': '-1',
     'reviewedCount': '-1',
     'fixedCount': -1
@@ -23,7 +24,8 @@ def boj_user_data(username):
 def parse_html(html):
     try:
         soup = BeautifulSoup(html, 'html.parser')
-
+        made_tag = soup.find('th', text='맞은 문제')
+        solved_cnt = made_tag.find_next_sibling('td').get_text(strip=True) if made_tag else 0
         # "만든 문제" 항목의 <th> 태그를 찾고, 그 다음 <td> 태그에서 값을 추출
         made_tag = soup.find('th', text='만든 문제')
         created_cnt = made_tag.find_next_sibling('td').get_text(strip=True) if made_tag else 0
@@ -40,6 +42,7 @@ def parse_html(html):
             fixed_cnt += int(tmp)
     
         data = {
+            'solvedCount': int(solved_cnt),
             'createdCount': created_cnt,
             'reviewedCount': reviewed_cnt,
             'fixedCount': fixed_cnt

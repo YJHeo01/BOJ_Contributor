@@ -57,11 +57,10 @@ def main(username):
             
             cursor.execute(
                 "UPDATE users SET solvedCount=?, createdCount=?, reviewedCount=?, fixedCount=?, voteCount=?, tier=?, class=?, date=? WHERE handle=?",
-                (solved_data['solvedCount'], boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'],solved_data['tier'], solved_data['class'], date, username)
+                (max(boj_data['solvedCount'],solved_data['solvedCount']), boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'],solved_data['tier'], solved_data['class'], date, username)
             )
             connection.commit()
-            ret_value = convert_data((username,solved_data['solvedCount'],boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'],solved_data['tier'], solved_data['class'], date))
-        
+            ret_value = convert_data((username,max(boj_data['solvedCount'],solved_data['solvedCount']),boj_data['createdCount'], boj_data['reviewedCount'], boj_data['fixedCount'], solved_data['voteCount'],solved_data['tier'], solved_data['class'], date))
     except sqlite3.Error as e:
         logger.error(f"Database error: {e}")
         if connection:
@@ -71,7 +70,6 @@ def main(username):
     finally:
         if connection:
             connection.close()
-    print(ret_value)
     return ret_value
 
 def convert_data(data):
