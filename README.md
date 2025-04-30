@@ -121,6 +121,8 @@ BOJ_STAT
     │   solved.ac 티어 PNG 이미지 31개
 ```
 
+![image](https://github.com/user-attachments/assets/d6fff484-a7fb-41da-ba90-9342a7c56fe4)
+
 ---
 
 
